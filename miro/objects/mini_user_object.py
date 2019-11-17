@@ -1,7 +1,7 @@
-from miro.objects.base_miro_object import MiroObjectType
+from miro.objects.base_miro_object import MiroObjectType, BaseMiroObject
 
 
-class MiniUserObject:
+class MiniUserObject(BaseMiroObject):
 
     def __init__(self, obj_id: str, name: str):
         super().__init__(obj_id, MiroObjectType.USER_MINI)
