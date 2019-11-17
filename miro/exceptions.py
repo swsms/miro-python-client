@@ -18,3 +18,7 @@ class ObjectNotFoundException(MiroException):
 
 class UnexpectedResponseException(MiroException):
     """The response has an unexpected code or data"""
+
+
+class InsufficientPermissions(MiroException):
+    """Not enough permissions to perform a certain action"""

@@ -1,3 +1,5 @@
+from typing import List
+
 import requests
 
 from miro.board import Board
@@ -14,7 +16,7 @@ class MiroApiClient:
             'Authorization': f'Bearer {self.auth_token}'
         }
 
-    def get_all_widgets_by_board_id(self, board_id: str):
+    def get_all_widgets_by_board_id(self, board_id: str) -> List[Widget]:
         url = f'{self.base_url}/v1/boards/{board_id}/widgets/'
         response = requests.get(url, headers=self.auth_header_as_dict)
         collection_json = get_json_or_raise_exception(response)
@@ -26,7 +28,7 @@ class MiroApiClient:
         except Exception as e:
             raise UnexpectedResponseException(cause=e)
 
-    def get_board_by_id(self, board_id: str):
+    def get_board_by_id(self, board_id: str) -> Board:
         url = f'{self.base_url}/v1/boards/{board_id}'
         response = requests.get(url, headers=self.auth_header_as_dict)
         board_json = get_json_or_raise_exception(response)
@@ -41,7 +43,7 @@ class MiroApiClient:
         except Exception as e:
             raise UnexpectedResponseException(cause=e)
 
-    def create_board(self, name: str, description: str):
+    def create_board(self, name: str, description: str) -> Board:
         headers = {
             'Content-Type': 'application/json'
         }
