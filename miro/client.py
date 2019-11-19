@@ -3,8 +3,9 @@ from typing import List
 import requests
 
 from miro.objects.board import Board
-from miro.utils import get_json_or_raise_exception, UnexpectedResponseException
 from miro.objects.widget import Widget
+from miro.utils import (get_json_or_raise_exception,
+                        UnexpectedResponseException)
 
 
 class MiroApiClient:
