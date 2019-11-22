@@ -1,4 +1,4 @@
-from miro.objects.base_miro_object import MiroObjectType, BaseMiroObject
+from miro.objects.base_miro_object import BaseMiroObject, MiroObjectType
 
 
 class MiniUserObject(BaseMiroObject):

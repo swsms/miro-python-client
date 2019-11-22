@@ -1,7 +1,8 @@
+import json
 from enum import Enum
 
 
-class MiroObjectType(Enum):
+class MiroObjectType(str, Enum):
     BOARD = 'board'
     WIDGET = 'widget'
     USER_MINI = 'user'
@@ -9,8 +10,17 @@ class MiroObjectType(Enum):
     LINE = 'line'
     TEXT = 'text'
 
+    def __repr__(self) -> str:
+        return self.value
 
-class BaseMiroObject:
+
+class JsonSerializableMixin:
+
+    def __repr__(self) -> str:
+        return json.dumps(self.__dict__)
+
+
+class BaseMiroObject(JsonSerializableMixin):
     def __init__(self, obj_id: str,
                  obj_type: MiroObjectType):
         self.obj_id = obj_id

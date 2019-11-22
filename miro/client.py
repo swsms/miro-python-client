@@ -2,10 +2,11 @@ from typing import List
 
 import requests
 
+from miro.objects.base_miro_object import MiroObjectType
 from miro.objects.board import Board
-from miro.objects.widget import Widget
+from miro.objects.widgets import Widget
 from miro.utils import (get_json_or_raise_exception,
-                        UnexpectedResponseException)
+                        UnexpectedResponseException, create_widget_by_type)
 
 
 class MiroApiClient:
@@ -24,8 +25,7 @@ class MiroApiClient:
 
         try:
             widgets_json = collection_json['data']
-            return [Widget(obj_id=w['id'],
-                           obj_type=w['type']) for w in widgets_json]
+            return [create_widget_by_type(w) for w in widgets_json]
         except Exception as e:
             raise UnexpectedResponseException(cause=e)
 

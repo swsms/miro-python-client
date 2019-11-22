@@ -10,8 +10,3 @@ class Board(BaseMiroObject):
         super().__init__(obj_id, MiroObjectType.BOARD)
         self.name = name
         self.description = description
-        self.capabilities = dict()
-        self.metadata = dict()
-
-    def __repr__(self) -> str:
-        return f'{self.obj_id}, {self.obj_type}, {self.name}, {self.description}'
